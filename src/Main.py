@@ -1,6 +1,10 @@
 from fpdf import FPDF
 
-def Main():
+def GetTitle() -> str:
+    pdf_title = input("Enter title for PDF: ")
+    return pdf_title
+
+def CreatePDF(title: str):
     # PDF object
     pdf = FPDF('P', 'mm', 'Letter')
 
@@ -11,10 +15,15 @@ def Main():
     pdf.set_font('helvetica', '', 16)
 
     # Add text
-    pdf.cell(40, 10, 'Hello, world!')
+    pdf.cell(40, 10, 'Helslo, world!')
 
     # Create PDF file
-    pdf.output('PDF.pdf')
+    fileName = title + '.pdf'
+    pdf.output(fileName)
+
+def Main():
+    title = GetTitle()
+    CreatePDF(title)
 
 if __name__ == '__main__':
     Main()

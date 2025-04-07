@@ -11,7 +11,8 @@ def Main():
     pdf.set_font('helvetica', '', 16)
 
     # Add text
-    pdf.cell(40, 10, 'Hello, world!')
+    pdf.cell(0, 20, '1')
+    pdf.cell(0, 40, '2')
 
     # Create PDF file
     pdf.output('PDF.pdf')

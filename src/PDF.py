@@ -9,8 +9,10 @@ def AddPage():
     pdf.add_page()
 
 def AddText(text: str, position: tuple[int, int]):
-    pdf.set_xy(*position) 
-    pdf.cell(0, 0, text)
+    pdf.cell(*position, text)
+
+def AddLine():
+    pdf.ln(12)
 
 def Create(title: str):
     pdf.output(title)

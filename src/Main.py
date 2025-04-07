@@ -6,11 +6,14 @@ def Main():
 
     # ------ PAGE 1 ------
     PDF.AddPage()
-    PDF.AddText('This is page 1!', (0, 50))
+    PDF.AddText('This is page 1!', (80,0))
+    PDF.AddText('Same line!', (0,0))
+    PDF.AddLine()
+    PDF.AddText('Description', (0,0))
 
     # ------ PAGE 2 ------
     PDF.AddPage()
-    PDF.AddText('This is page 2!', (0, 50))
+    PDF.AddText('This is page 2!', (0, 0))
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

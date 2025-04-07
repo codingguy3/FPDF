@@ -5,14 +5,14 @@ def Main():
     PDF.AddPage()
 
     PDF.SetFont('helvetica', 16)
-    PDF.AddBox('Hey!', 15)
+    PDF.AddText('Hey!', 15)
     PDF.AddLine()
 
     PDF.SetFont('helvetica', 16, 'B')
-    PDF.AddBox('Hey!', 15)
+    PDF.AddText('Hey!', 15)
     PDF.AddLine()
 
-    PDF.AddBox('_______________________________________________________', 175, centered=True)
+    PDF.AddText('_______________________________________________________', 175, centered=True)
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

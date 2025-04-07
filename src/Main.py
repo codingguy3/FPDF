@@ -4,7 +4,7 @@ from fpdf import FPDF
 pdf = FPDF('P', 'mm', 'Letter')
 
 def AddText(text: str, position: tuple[int, int]):
-    pdf.set_xy(position[0], position[1])
+    pdf.set_xy(*position) # This just does pdf.set_xy(position[0], position[1])
     pdf.cell(0, 0, text)
 
 def Main():
@@ -17,6 +17,7 @@ def Main():
     # Add text
     AddText('Line 1', (0, 5))
     AddText('Line 2', (0, 15))
+    AddText('Line 3', (0, 25))
 
     # Create PDF file
     pdf.output('PDF.pdf')

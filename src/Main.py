@@ -6,19 +6,27 @@ def Main():
 
     # ------ PAGE 1 ------
     PDF.AddPage()
-    PDF.AddBox('Welcome to my PDF', 54, centered=True)
-    PDF.AddLine()
-    PDF.AddText('This is page 1!', 80)
-    PDF.AddText('Same line!', 90)
-    PDF.AddText('Final words', 0)
-    PDF.AddLine()
-    PDF.AddText('Description', 0) 
-    PDF.AddLine()
-    PDF.AddBox('Sample box', 32)
+    for i in range(1, 16):
+        PDF.AddText(f'Line {i}', 22)
+        PDF.AddLine()
 
     # ------ PAGE 2 ------
     PDF.AddPage()
-    PDF.AddText('This is page 2!', 0)
+    for i in range(1, 16):
+        PDF.AddBox(f'Line {i}', 22)
+        PDF.AddLine()
+
+    # ------ PAGE 3 ------
+    PDF.AddPage()
+    for i in range(1, 16):
+        PDF.AddText(f'Line {i}', 22, centered=True)
+        PDF.AddLine()
+
+    # ------ PAGE 4 ------
+    PDF.AddPage()
+    for i in range(1, 16):
+        PDF.AddBox(f'Line {i}', 22, centered=True)
+        PDF.AddLine()
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

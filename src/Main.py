@@ -1,5 +1,7 @@
 from fpdf import FPDF
 
+# test
+
 # Global PDF object
 pdf = FPDF('P', 'mm', 'Letter')
 

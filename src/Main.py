@@ -4,8 +4,8 @@ FONT_SIZE = 11
 
 def Main():
     # ------ GET INPUT ------
-    income = int (input('Enter income: $'))
-    expenses = int (input('Enter expenses: $'))
+    income = 5000
+    expenses = 2000
     profit = income - expenses
 
     # ------ PAGE DETAILS ------

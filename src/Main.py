@@ -1,5 +1,6 @@
 from fpdf import FPDF
 
+
 def Main():
     # PDF object
     pdf = FPDF('P', 'mm', 'Letter')

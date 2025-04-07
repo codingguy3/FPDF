@@ -1,16 +1,18 @@
 import PDF
 
+FONT_SIZE = 16
+
 def Main():
     # ------ PAGE DETAILS ------
     PDF.AddPage()
 
-    PDF.SetFont('helvetica', 16)
+    PDF.SetFont('helvetica', FONT_SIZE)
     PDF.AddText('Hey!', 15)
-    PDF.AddLine()
+    PDF.AddLine(FONT_SIZE)
 
-    PDF.SetFont('helvetica', 16, 'B')
+    PDF.SetFont('helvetica', FONT_SIZE, 'B')
     PDF.AddText('Hey!', 15)
-    PDF.AddLine()
+    PDF.AddLine(FONT_SIZE)
 
     PDF.AddDivider()
 

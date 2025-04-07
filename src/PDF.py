@@ -23,8 +23,8 @@ def AddBox(text: str, width: int, centered: bool = False):
 def AddImage(filePath: str, properties: tuple[int, int, int, int]):
     pdf.image(filePath, *properties)
 
-def AddLine():
-    pdf.ln(12)
+def AddLine(font_size: int):
+    pdf.ln(font_size * 3/4)
 
 def AddDivider():
     AddText('_______________________________________________________', 175, centered=True)

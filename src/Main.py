@@ -1,36 +1,16 @@
 import PDF
 
 def Main():
-    # ------ INITIALIZE ------
-    PDF.SetFont('helvetica', 16)
-
-    # ------ PAGE 1 ------
+    # ------ PAGE DETAILS ------
     PDF.AddPage()
 
-    PDF.AddImage('res/apple.png', (8, 4, 16))
+    PDF.SetFont('helvetica', 16)
+    PDF.AddBox('Hey!', 15)
     PDF.AddLine()
 
-    for i in range(1, 16):
-        PDF.AddText(f'Line {i}', 22)
-        PDF.AddLine()
-
-    # ------ PAGE 2 ------
-    PDF.AddPage()
-    for i in range(1, 16):
-        PDF.AddBox(f'Line {i}', 22)
-        PDF.AddLine()
-
-    # ------ PAGE 3 ------
-    PDF.AddPage()
-    for i in range(1, 16):
-        PDF.AddText(f'Line {i}', 22, centered=True)
-        PDF.AddLine()
-
-    # ------ PAGE 4 ------
-    PDF.AddPage()
-    for i in range(1, 16):
-        PDF.AddBox(f'Line {i}', 22, centered=True)
-        PDF.AddLine()
+    PDF.SetFont('helvetica', 16, 'B')
+    PDF.AddBox('Hey!', 15)
+    PDF.AddLine()
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

@@ -2,8 +2,8 @@ from fpdf import FPDF
 
 pdf = FPDF('P', 'mm', 'Letter')
 
-def SetFont(font: str, size: int):
-    pdf.set_font(font, '', size)
+def SetFont(font: str, size: int, style: str = ''):
+    pdf.set_font(font, style, size)
 
 def AddPage():
     pdf.add_page()

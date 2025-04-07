@@ -26,5 +26,8 @@ def AddImage(filePath: str, properties: tuple[int, int, int, int]):
 def AddLine():
     pdf.ln(12)
 
+def AddDivider():
+    AddText('_______________________________________________________', 175, centered=True)
+
 def Create(title: str):
     pdf.output(title)

@@ -12,7 +12,7 @@ def Main():
     PDF.AddText('Hey!', 15)
     PDF.AddLine()
 
-    PDF.AddText('_______________________________________________________', 175, centered=True)
+    PDF.AddDivider()
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

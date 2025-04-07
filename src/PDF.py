@@ -24,7 +24,7 @@ def AddImage(filePath: str, properties: tuple[int, int, int, int]):
     pdf.image(filePath, *properties)
 
 def AddLine(font_size: int):
-    pdf.ln(font_size * 3/4)
+    pdf.ln(font_size * 1/2)
 
 def AddDivider():
     SetFont('helvetica', 16, 'B')

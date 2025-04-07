@@ -12,6 +12,8 @@ def Main():
     PDF.AddBox('Hey!', 15)
     PDF.AddLine()
 
+    PDF.AddBox('_______________________________________________________', 175, centered=True)
+
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')
 

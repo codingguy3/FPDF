@@ -3,6 +3,11 @@ import PDF
 FONT_SIZE = 11
 
 def Main():
+    # ------ GET INPUT ------
+    income = int (input('Enter income: $'))
+    expenses = int (input('Enter expenses: $'))
+    profit = income - expenses
+
     # ------ PAGE DETAILS ------
     PDF.AddPage()
 
@@ -16,6 +21,20 @@ def Main():
 
     PDF.SetFont('helvetica', FONT_SIZE)
     PDF.AddText('(In millions, except number of shares, which are reflected in thousands, and per-share amounts)', 167, centered=True)
+
+    PDF.AddLine(FONT_SIZE)
+    PDF.AddLine(FONT_SIZE)
+    PDF.AddLine(FONT_SIZE)
+
+    PDF.AddText(f'Income: ${income}', 32)
+    PDF.AddLine(FONT_SIZE)
+
+    PDF.AddText(f'Expenses: ${expenses}', 32)
+    PDF.AddLine(FONT_SIZE)
+
+    PDF.AddText(f'Profit: ${profit}', 32)
+    PDF.AddLine(FONT_SIZE)
+
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

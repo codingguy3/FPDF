@@ -8,11 +8,17 @@ def SetFont(font: str, size: int):
 def AddPage():
     pdf.add_page()
 
-def AddText(text: str, width: int):
-    pdf.cell(width, 12, text)
+def AddText(text: str, width: int, centered: bool = False):
+    if centered:
+        pdf.cell(width, 12, text, center=True)
+    else:
+        pdf.cell(width, 12, text)
 
-def AddBox(text: str, width: int):
-    pdf.cell(width, 12, text, border=True)
+def AddBox(text: str, width: int, centered: bool = False):
+    if centered:
+        pdf.cell(width, 12, text, border=True, center=True)
+    else:
+        pdf.cell(width, 12, text, border=True)
 
 def AddLine():
     pdf.ln(12)

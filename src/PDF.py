@@ -8,8 +8,11 @@ def SetFont(font: str, size: int):
 def AddPage():
     pdf.add_page()
 
-def AddText(text: str, position: tuple[int, int]):
-    pdf.cell(*position, text, border=True)
+def AddText(text: str, width: int):
+    pdf.cell(width, 12, text)
+
+def AddBox(text: str, width: int):
+    pdf.cell(width, 12, text, border=True)
 
 def AddLine():
     pdf.ln(12)

@@ -6,6 +6,10 @@ def Main():
 
     # ------ PAGE 1 ------
     PDF.AddPage()
+
+    PDF.AddImage('res/apple.png', (8, 4, 16))
+    PDF.AddLine()
+
     for i in range(1, 16):
         PDF.AddText(f'Line {i}', 22)
         PDF.AddLine()

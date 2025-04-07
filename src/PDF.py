@@ -20,6 +20,9 @@ def AddBox(text: str, width: int, centered: bool = False):
     else:
         pdf.cell(width, 12, text, border=True)
 
+def AddImage(filePath: str, properties: tuple[int, int, int, int]):
+    pdf.image(filePath, *properties)
+
 def AddLine():
     pdf.ln(12)
 

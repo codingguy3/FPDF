@@ -1,28 +1,19 @@
-from fpdf import FPDF
-
-# didnt stage changes .
-
-# Global PDF object
-pdf = FPDF('P', 'mm', 'Letter')
-
-def AddText(text: str, position: tuple[int, int]):
-    pdf.set_xy(*position) # This just does pdf.set_xy(position[0], position[1])
-    pdf.cell(0, 0, text)
+import PDF
 
 def Main():
-    # Add a page
-    pdf.add_page()
+    # ------ INITIALIZE ------
+    PDF.SetFont('helvetica', 16)
 
-    # Specify font
-    pdf.set_font('helvetica', '', 16)
+    # ------ PAGE 1 ------
+    PDF.AddPage()
+    PDF.AddText('This is page 1!', (0, 50))
 
-    # Add text
-    AddText('Line 1', (0, 5))
-    AddText('Line 2', (0, 15))
-    AddText('Line 3', (0, 25))
+    # ------ PAGE 2 ------
+    PDF.AddPage()
+    PDF.AddText('This is page 2!', (0, 50))
 
-    # Create PDF file
-    pdf.output('PDF.pdf')
+    # ------ CREATE PDF ------
+    PDF.Create('PDF.pdf')
 
 if __name__ == '__main__':
     Main()

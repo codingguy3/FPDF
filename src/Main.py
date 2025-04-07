@@ -1,6 +1,6 @@
 import PDF
 
-FONT_SIZE = 16
+FONT_SIZE = 12
 
 def Main():
     # ------ PAGE DETAILS ------

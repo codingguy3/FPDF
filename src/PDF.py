@@ -27,6 +27,7 @@ def AddLine(font_size: int):
     pdf.ln(font_size * 3/4)
 
 def AddDivider():
+    SetFont('helvetica', 16, 'B')
     AddText('_______________________________________________________', 175, centered=True)
 
 def Create(title: str):

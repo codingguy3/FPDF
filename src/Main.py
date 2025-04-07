@@ -12,6 +12,7 @@ def Main():
 
     # Add text
     pdf.cell(0, 20, '1')
+    pdf.ln(5)
     pdf.cell(0, 40, '2')
 
     # Create PDF file

@@ -1,9 +1,13 @@
 from fpdf import FPDF
 
-def Main():
-    # PDF object
-    pdf = FPDF('P', 'mm', 'Letter')
+# Global PDF object
+pdf = FPDF('P', 'mm', 'Letter')
 
+def AddText(text: str, position: tuple[int, int]):
+    pdf.set_xy(position[0], position[1])
+    pdf.cell(0, 0, text)
+
+def Main():
     # Add a page
     pdf.add_page()
 
@@ -11,14 +15,8 @@ def Main():
     pdf.set_font('helvetica', '', 16)
 
     # Add text
-    pdf.set_xy(0, 5)
-    pdf.cell(0, 0, '1')
-
-    pdf.set_xy(0, 15)
-    pdf.cell(0, 0, '2')
-
-    pdf.set_xy(0, 25)
-    pdf.cell(0, 0, '3')
+    AddText('Line 1', (0, 5))
+    AddText('Line 2', (0, 15))
 
     # Create PDF file
     pdf.output('PDF.pdf')

@@ -2,39 +2,29 @@ import PDF
 
 FONT_SIZE = 11
 
-def Main():
-    # ------ GET INPUT ------
-    income = 5000
-    expenses = 2000
-    profit = income - expenses
+page_number = 0
 
-    # ------ PAGE DETAILS ------
-    PDF.AddPage()
-
-    PDF.SetFont('helvetica', FONT_SIZE, 'B')
-    PDF.AddText('Apple Inc.', 0, centered=True)
-
-    PDF.AddLine(16)
-
-    PDF.AddText('CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited)', 0, centered=True)
-    PDF.AddLine(FONT_SIZE)
+def Footer():
+    global page_number
+    page_number += 1
 
     PDF.SetFont('helvetica', FONT_SIZE)
-    PDF.AddText('(In millions, except number of shares, which are reflected in thousands, and per-share amounts)', 0, centered=True)
+    PDF.SetY(-32)
+    PDF.AddText(str(page_number), 0, centered=True)
 
-    PDF.AddLine(FONT_SIZE)
-    PDF.AddLine(FONT_SIZE)
-    PDF.AddLine(FONT_SIZE)
+def CreatePage():
+    PDF.AddPage()
+    Footer()
 
-    PDF.AddText(f'Income: ${income}', 32)
-    PDF.AddLine(FONT_SIZE)
+def Main():
+    # ------ PAGE 1 ------
+    CreatePage()
 
-    PDF.AddText(f'Expenses: ${expenses}', 32)
-    PDF.AddLine(FONT_SIZE)
+    # ------ PAGE 2 ------
+    CreatePage()
 
-    PDF.AddText(f'Profit: ${profit}', 32)
-    PDF.AddLine(FONT_SIZE)
-
+    # ------ PAGE 3 ------
+    CreatePage()
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

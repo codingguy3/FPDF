@@ -8,6 +8,10 @@ IPHONE_PRICE = 999.99
 AIRPODS_PRICE = 499.99
 CHARGER_PRICE = 99.99
 
+iphones = None
+airpods = None 
+chargers = None
+
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
     PDF.SetX(15)
@@ -31,13 +35,11 @@ def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
     if qty > 0:
         AddRow(item, str(qty), f'${unit_price}', f'${total}')
 
+def GUI():
+    pass
+
 
 def UpdatePDF():
-    # ------ GET INPUT ------
-    iphones = int (input('Enter number of iphones: '))
-    airpods = int (input('Enter number of airpods: '))
-    chargers = int (input('Enter number of chargers: '))
-
     # ------ CALCULATE ------
     iphones_total = round (iphones * IPHONE_PRICE, 2)
     airpods_total = round (airpods * AIRPODS_PRICE, 2)
@@ -60,6 +62,7 @@ def UpdatePDF():
     PDF.Create('PDF.pdf')
 
 def Main():
+    GUI()
     UpdatePDF()
 
 if __name__ == '__main__':

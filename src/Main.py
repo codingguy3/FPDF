@@ -3,6 +3,10 @@ import PDF
 HEADER_SIZE = 16
 PARAGRAPH_SIZE = 15
 
+IPHONE_PRICE = 999
+AIRPODS_PRICE = 499
+CHARGER_PRICE = 99
+
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
     PDF.SetX(15)
@@ -23,6 +27,16 @@ def AddRow(str1: str, str2: str, str3: str, str4: str):
     PDF.AddLine(12)
 
 def Main():
+    # ------ GET INPUT ------
+    iphones = int (input('Enter number of iphones: '))
+    airpods = int (input('Enter number of airpods: '))
+    chargers = int (input('Enter number of chargers: '))
+
+    # ------ CALCULATE ------
+    iphones_total = iphones * IPHONE_PRICE
+    airpods_total = airpods * AIRPODS_PRICE
+    charger_total = chargers * CHARGER_PRICE
+
     # ------ MAKE A PAGE ------
     CreatePage()
 
@@ -31,12 +45,9 @@ def Main():
     AddRow('ITEM', 'QTY', 'UNIT PRICE', 'TOTAL')
 
     PDF.SetFont('helvetica', PARAGRAPH_SIZE)
-    AddRow('iPhone 16', '3', '$12.50', '$37.50')
-    AddRow('iPhone 16', '3', '$12.50', '$37.50')
-    AddRow('iPhone 16', '3', '$12.50', '$37.50')
-    AddRow('iPhone 16', '3', '$12.50', '$37.50')
-    AddRow('iPhone 16', '3', '$12.50', '$37.50')
-    AddRow('iPhone 16', '3', '$12.50', '$37.50')
+    AddRow('iPhone', str(iphones), f'${IPHONE_PRICE}', f'${iphones_total}')
+    AddRow('Airpods', str(airpods), f'${AIRPODS_PRICE}', f'${airpods_total}')
+    AddRow('Charger', str(chargers), f'${CHARGER_PRICE}', f'${charger_total}')
 
 
     # ------ OUTPUT PDF ------

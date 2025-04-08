@@ -13,12 +13,6 @@ airpods = None
 chargers = None
 
 
-
-def Print():
-    print('State has changed')
-
-
-
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
     PDF.SetX(15)
@@ -45,15 +39,22 @@ def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
 
 
 def GUI():
+    # ------- NESTED FUNCTIONS ------
+    def Print():
+        if checkboxIsOn.get() == 1:
+            print('Ticked')
+        else:
+            print('Nothing')
+
     # ------ SETUP ------
     global iphones, airpods, chargers
     gui = tkinter.Tk()
+    checkboxIsOn = tkinter.IntVar()
     gui.title('GUI')
     gui.iconbitmap('res/pdf_edit.ico')
     gui.geometry('250x350')
 
     # ------ CHECKBOX ------
-    checkboxIsOn = tkinter.IntVar()
     checkbox = tkinter.Checkbutton(gui, text='iPhone', variable=checkboxIsOn, command=Print)
     checkbox.pack()
 

@@ -32,6 +32,12 @@ def Main():
 
     PDF.SetFont('helvetica', PARAGRAPH_SIZE)
     AddRow('iPhone 16', '3', '$12.50', '$37.50')
+    AddRow('iPhone 16', '3', '$12.50', '$37.50')
+    AddRow('iPhone 16', '3', '$12.50', '$37.50')
+    AddRow('iPhone 16', '3', '$12.50', '$37.50')
+    AddRow('iPhone 16', '3', '$12.50', '$37.50')
+    AddRow('iPhone 16', '3', '$12.50', '$37.50')
+
 
     # ------ OUTPUT PDF ------
     PDF.Create('PDF.pdf')

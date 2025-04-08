@@ -1,4 +1,5 @@
 import PDF
+import tkinter
 
 HEADER_SIZE = 16
 PARAGRAPH_SIZE = 15
@@ -26,7 +27,12 @@ def AddRow(str1: str, str2: str, str3: str, str4: str):
     PDF.AddBox(str4, 40, centered=True)
     PDF.AddLine(12)
 
-def Main():
+def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
+    if qty > 0:
+        AddRow(item, str(qty), f'${unit_price}', f'${total}')
+
+
+def UpdatePDF():
     # ------ GET INPUT ------
     iphones = int (input('Enter number of iphones: '))
     airpods = int (input('Enter number of airpods: '))
@@ -45,13 +51,16 @@ def Main():
     AddRow('ITEM', 'QTY', 'UNIT PRICE', 'TOTAL')
 
     PDF.SetFont('helvetica', PARAGRAPH_SIZE)
-    AddRow('iPhone', str(iphones), f'${IPHONE_PRICE}', f'${iphones_total}')
-    AddRow('Airpods', str(airpods), f'${AIRPODS_PRICE}', f'${airpods_total}')
-    AddRow('Charger', str(chargers), f'${CHARGER_PRICE}', f'${charger_total}')
+    AddData('iPhone', iphones, IPHONE_PRICE, iphones_total)
+    AddData('Airpods', airpods, AIRPODS_PRICE, airpods_total)
+    AddData('Charger', chargers, CHARGER_PRICE, charger_total)
 
 
     # ------ OUTPUT PDF ------
     PDF.Create('PDF.pdf')
+
+def Main():
+    UpdatePDF()
 
 if __name__ == '__main__':
     Main()

@@ -1,19 +1,25 @@
 import PDF
 
-FONT_SIZE = 11
+HEADER_SIZE = 16
+PARAGRAPH_SIZE = 11
 
 page_number = 0
+
+def Header():
+    PDF.SetFont('helvetica', HEADER_SIZE, 'B')
+    PDF.AddText('This is a header', 0, centered=True)
 
 def Footer():
     global page_number
     page_number += 1
 
-    PDF.SetFont('helvetica', FONT_SIZE)
+    PDF.SetFont('helvetica', PARAGRAPH_SIZE)
     PDF.SetY(-32)
     PDF.AddText(str(page_number), 0, centered=True)
 
 def CreatePage():
     PDF.AddPage()
+    Header()
     Footer()
 
 def Main():

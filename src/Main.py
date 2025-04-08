@@ -7,7 +7,9 @@ page_number = 0
 
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
-    PDF.AddText('This is a header', 0, centered=True)
+    PDF.SetX(15)
+    PDF.AddText('Apple Inc.', 0, centered=True)
+    PDF.AddImage('res/apple.png', (82, 9, 12, 12))
 
 def Footer():
     global page_number

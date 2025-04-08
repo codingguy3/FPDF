@@ -18,12 +18,15 @@ def Main():
     # ------ PAGE CONTENT ------
     CreatePage()
 
-    PDF.SetFont('helvetica', PARAGRAPH_SIZE, 'BU')
-    PDF.AddText('Items:', 16)
+    PDF.SetFont('helvetica', PARAGRAPH_SIZE, 'B')
+    PDF.SetX(23)
+    PDF.AddBox('ITEM', 60, centered=True)
+    PDF.AddBox('QTY', 25, centered=True)
+    PDF.AddBox('UNIT PRICE', 40, centered=True)
+    PDF.AddBox('TOTAL', 40, centered=True)
     PDF.AddLine(PARAGRAPH_SIZE)
 
     PDF.SetFont('helvetica', PARAGRAPH_SIZE)
-    PDF.AddText('iPhone 16 (x5)', 22)
 
 
     # ------ CREATE PDF ------

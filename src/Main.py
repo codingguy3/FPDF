@@ -1,38 +1,30 @@
 import PDF
 
 HEADER_SIZE = 16
-PARAGRAPH_SIZE = 11
-
-page_number = 0
+PARAGRAPH_SIZE = 13
 
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
     PDF.SetX(15)
     PDF.AddText('Apple Inc.', 0, centered=True)
     PDF.AddImage('res/apple.png', (82, 9, 12, 12))
-
-def Footer():
-    global page_number
-    page_number += 1
-
-    PDF.SetFont('helvetica', PARAGRAPH_SIZE)
-    PDF.SetY(-32)
-    PDF.AddText(str(page_number), 0, centered=True)
+    PDF.AddLine(35)
 
 def CreatePage():
     PDF.AddPage()
     Header()
-    Footer()
 
 def Main():
-    # ------ PAGE 1 ------
+    # ------ PAGE CONTENT ------
     CreatePage()
 
-    # ------ PAGE 2 ------
-    CreatePage()
+    PDF.SetFont('helvetica', PARAGRAPH_SIZE, 'BU')
+    PDF.AddText('Items:', 16)
+    PDF.AddLine(PARAGRAPH_SIZE)
 
-    # ------ PAGE 3 ------
-    CreatePage()
+    PDF.SetFont('helvetica', PARAGRAPH_SIZE)
+    PDF.AddText('iPhone 16 (x5)', 22)
+
 
     # ------ CREATE PDF ------
     PDF.Create('PDF.pdf')

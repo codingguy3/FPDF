@@ -3,9 +3,9 @@ import PDF
 HEADER_SIZE = 16
 PARAGRAPH_SIZE = 15
 
-IPHONE_PRICE = 999
-AIRPODS_PRICE = 499
-CHARGER_PRICE = 99
+IPHONE_PRICE = 999.99
+AIRPODS_PRICE = 499.99
+CHARGER_PRICE = 99.99
 
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
@@ -33,9 +33,9 @@ def Main():
     chargers = int (input('Enter number of chargers: '))
 
     # ------ CALCULATE ------
-    iphones_total = iphones * IPHONE_PRICE
-    airpods_total = airpods * AIRPODS_PRICE
-    charger_total = chargers * CHARGER_PRICE
+    iphones_total = round (iphones * IPHONE_PRICE, 2)
+    airpods_total = round (airpods * AIRPODS_PRICE, 2)
+    charger_total = round (chargers * CHARGER_PRICE, 2)
 
     # ------ MAKE A PAGE ------
     CreatePage()

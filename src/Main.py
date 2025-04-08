@@ -12,6 +12,13 @@ iphones = None
 airpods = None 
 chargers = None
 
+
+
+def Print():
+    print('State has changed')
+
+
+
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
     PDF.SetX(15)
@@ -35,8 +42,23 @@ def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
     if qty > 0:
         AddRow(item, str(qty), f'${unit_price}', f'${total}')
 
+
+
 def GUI():
-    pass
+    # ------ SETUP ------
+    global iphones, airpods, chargers
+    gui = tkinter.Tk()
+    gui.title('GUI')
+    gui.iconbitmap('res/pdf_edit.ico')
+    gui.geometry('250x350')
+
+    # ------ CHECKBOX ------
+    checkboxIsOn = tkinter.IntVar()
+    checkbox = tkinter.Checkbutton(gui, text='iPhone', variable=checkboxIsOn, command=Print)
+    checkbox.pack()
+
+    # ------ LOOP ------
+    gui.mainloop()
 
 
 def UpdatePDF():
@@ -63,7 +85,7 @@ def UpdatePDF():
 
 def Main():
     GUI()
-    UpdatePDF()
+    # UpdatePDF()
 
 if __name__ == '__main__':
     Main()

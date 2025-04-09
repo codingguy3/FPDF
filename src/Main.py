@@ -1,7 +1,7 @@
 import pdf
 import tkinter
-from utils import gui, file
 import items
+from utils import gui, file
 
 def OpenGUI():
     pass

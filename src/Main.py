@@ -14,6 +14,8 @@ iphones = None
 airpods = None 
 chargers = None
 
+checkboxes_ticked = None
+
 
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
@@ -50,7 +52,7 @@ def GUI():
                 checkboxes_ticked[i] = False            
 
     # ------ SETUP ------
-    global iphones, airpods, chargers
+    global iphones, airpods, chargers, checkboxes_ticked
     gui = tkinter.Tk()
     gui.title('GUI')
     gui.iconbitmap('res/pdf_edit.ico')
@@ -95,6 +97,11 @@ def UpdatePDF():
 
 def Main():
     GUI()
+    
+    global checkboxes_ticked
+    for i in range(3):
+        print(checkboxes_ticked[i])
+
     # UpdatePDF()
 
 if __name__ == '__main__':

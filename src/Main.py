@@ -8,7 +8,7 @@ IPHONE_PRICE = 999.99
 AIRPODS_PRICE = 499.99
 CHARGER_PRICE = 99.99
 
-items = {'iPhone': 0, 'AirPods': 0, 'Charger': 0}
+quantities = [0,0,0]
 
 checkboxes_ticked = None
 
@@ -70,10 +70,25 @@ def GUI():
 
 
 def UpdatePDF():
+    # ------ GET QUANTITIES FROM GUI ------
+    global checkboxes_ticked, quantities
+    for i in range(len(checkboxes_ticked)):
+        if checkboxes_ticked[i] == True:
+            quantities[i] = 1 
+        else:
+            quantities[i] = 0
+        print(quantities[i])
+
     # ------ CALCULATE ------
-    iphones_total = round (iphones * IPHONE_PRICE, 2)
-    airpods_total = round (airpods * AIRPODS_PRICE, 2)
-    charger_total = round (chargers * CHARGER_PRICE, 2)
+    iphones_total = round (quantities[0] * IPHONE_PRICE, 2)
+    airpods_total = round (quantities[1] * AIRPODS_PRICE, 2)
+    charger_total = round (quantities[2] * CHARGER_PRICE, 2)
+
+    data_arguments = [
+        ('iPhone', quantities[0], IPHONE_PRICE, iphones_total),
+        ('Airpods', quantities[1], AIRPODS_PRICE, airpods_total),
+        ('Charger', quantities[2], CHARGER_PRICE, charger_total)
+    ]
 
     # ------ MAKE A PAGE ------
     CreatePage()
@@ -83,9 +98,8 @@ def UpdatePDF():
     AddRow('ITEM', 'QTY', 'UNIT PRICE', 'TOTAL')
 
     PDF.SetFont('helvetica', PARAGRAPH_SIZE)
-    AddData('iPhone', iphones, IPHONE_PRICE, iphones_total)
-    AddData('Airpods', airpods, AIRPODS_PRICE, airpods_total)
-    AddData('Charger', chargers, CHARGER_PRICE, charger_total)
+    for i in range(len(checkboxes_ticked)):
+        AddData(*data_arguments[i])
 
 
     # ------ OUTPUT PDF ------
@@ -93,13 +107,7 @@ def UpdatePDF():
 
 def Main():
     GUI()
-    
-    global checkboxes_ticked, iphones, airpods, chargers
-    for i in range(len(checkboxes_ticked)):
-        if checkboxes_ticked[i] == True:
-            pass
-
-    # UpdatePDF()
+    UpdatePDF()
 
 if __name__ == '__main__':
     Main()

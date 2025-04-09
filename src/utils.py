@@ -1,9 +1,10 @@
 import pdf
+import tkinter
 
-class GUI:
+class GUI: # Utility functions for GUI
     pass
 
-class File:
+class File: # Utility functions for PDF file
     pass
 
 

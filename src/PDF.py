@@ -1,43 +1,43 @@
 from fpdf import FPDF
 
-pdf = FPDF('P', 'mm', 'Letter')
+PDF = FPDF('P', 'mm', 'Letter')
 
 def SetFont(font: str, size: int, style: str = ''):
-    pdf.set_font(font, style, size)
+    PDF.set_font(font, style, size)
 
 def AddPage():
-    pdf.add_page()
+    PDF.add_page()
 
 def SetX(x: int):
-    pdf.set_x(x)
+    PDF.set_x(x)
 
 def SetY(y: int):
-    pdf.set_y(y)
+    PDF.set_y(y)
 
 def SetXY(xy: int):
-    pdf.set_xy(xy)
+    PDF.set_xy(xy)
 
 def AddText(text: str, width: int, centered: bool = False):
     if centered:
-        pdf.cell(width, 12, text, align='C')
+        PDF.cell(width, 12, text, align='C')
     else:
-        pdf.cell(width, 12, text)
+        PDF.cell(width, 12, text)
 
 def AddBox(text: str, width: int, centered: bool = False):
     if centered:
-        pdf.cell(width, 12, text, border=True, align='C')
+        PDF.cell(width, 12, text, border=True, align='C')
     else:
-        pdf.cell(width, 12, text, border=True)
+        PDF.cell(width, 12, text, border=True)
 
 def AddImage(filePath: str, properties: tuple[int, int, int, int]):
-    pdf.image(filePath, *properties)
+    PDF.image(filePath, *properties)
 
 def AddLine(font_size: int):
-    pdf.ln(font_size)
+    PDF.ln(font_size)
 
 def AddDivider():
     SetFont('helvetica', 16, 'B')
     AddText('_______________________________________________________', 175, centered=True)
 
-def Create(title: str):
-    pdf.output(title)
+def Output(title: str):
+    PDF.output(title)

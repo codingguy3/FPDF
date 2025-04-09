@@ -46,8 +46,6 @@ def GUI():
         for i in range(3):
             if checkboxes_states[i].get() == 1:
                 print(f'Item {i} ticked')
-            else:
-                print(f'Item {i} unticked')
 
     # ------ SETUP ------
     global iphones, airpods, chargers
@@ -56,8 +54,6 @@ def GUI():
     gui.iconbitmap('res/pdf_edit.ico')
     gui.geometry('250x350')
     checkboxes_states = [ tkinter.IntVar(), tkinter.IntVar(), tkinter.IntVar() ]
-    for state in checkboxes_states:
-        state.trace_add('write', Print)
 
     # ------ CHECKBOX ------
     checkboxes = [

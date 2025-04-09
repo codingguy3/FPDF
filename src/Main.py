@@ -4,14 +4,11 @@ import tkinter
 HEADER_SIZE = 16
 PARAGRAPH_SIZE = 15
 
-IPHONE_PRICE = 999.99
-AIRPODS_PRICE = 499.99
-CHARGER_PRICE = 99.99
+PRICES = {'iPhone': 999.99, 'Airpods': 499.99, 'Charger': 99.99}
 
-quantities = [0,0,0]
+quantities = {'iPhone': 0, 'Airpods': 0, 'Charger': 0}
 
 checkboxes_ticked = None
-
 
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
@@ -32,77 +29,48 @@ def AddRow(str1: str, str2: str, str3: str, str4: str):
     PDF.AddBox(str4, 40, centered=True)
     PDF.AddLine(12)
 
-def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
+def AddData(item: str, qty: int, unit_price: int, total: int):
     if qty > 0:
         AddRow(item, str(qty), f'${unit_price}', f'${total}')
 
-
-
 def GUI():
-    # ------- NESTED FUNCTIONS ------
     def Update():
-        for i in range(len(checkboxes_states)):
-            if checkboxes_states[i].get() == 1:
-                checkboxes_ticked[i] = True
-            else:
-                checkboxes_ticked[i] = False            
+        for item in checkboxes_states:
+            checkboxes_ticked[item] = checkboxes_states[item].get() == 1
 
-    # ------ SETUP ------
-    global iphones, airpods, chargers, checkboxes_ticked
+    global checkboxes_ticked
     gui = tkinter.Tk()
     gui.title('GUI')
     gui.iconbitmap('res/pdf_edit.ico')
     gui.geometry('250x350')
-    checkboxes_states = [ tkinter.IntVar(), tkinter.IntVar(), tkinter.IntVar() ]
-    checkboxes_ticked = [False, False, False]
 
-    # ------ CHECKBOX ------
-    checkboxes = [
-        tkinter.Checkbutton(gui, text='iPhone', variable=checkboxes_states[0], command=Update),
-        tkinter.Checkbutton(gui, text='Airpods', variable=checkboxes_states[1], command=Update),
-        tkinter.Checkbutton(gui, text='Charger', variable=checkboxes_states[2], command=Update)
-        ]
+    checkboxes_states = {item: tkinter.IntVar() for item in PRICES.keys()}
+    checkboxes_ticked = {item: False for item in PRICES.keys()}
+
+    checkboxes = [tkinter.Checkbutton(gui, text=item, variable=checkboxes_states[item], command=Update) for item in PRICES.keys()]
+    
     for checkbox in checkboxes:
         checkbox.pack()
 
-    # ------ LOOP ------
     gui.mainloop()
 
-
 def UpdatePDF():
-    # ------ GET QUANTITIES FROM GUI ------
     global checkboxes_ticked, quantities
-    for i in range(len(checkboxes_ticked)):
-        if checkboxes_ticked[i] == True:
-            quantities[i] = 1 
-        else:
-            quantities[i] = 0
-        print(quantities[i])
 
-    # ------ CALCULATE ------
-    iphones_total = round (quantities[0] * IPHONE_PRICE, 2)
-    airpods_total = round (quantities[1] * AIRPODS_PRICE, 2)
-    charger_total = round (quantities[2] * CHARGER_PRICE, 2)
+    for item in quantities.keys():
+        quantities[item] = 1 if checkboxes_ticked[item] else 0
+        print(f"{item}: {quantities[item]}")
 
-    data_arguments = [
-        ('iPhone', quantities[0], IPHONE_PRICE, iphones_total),
-        ('Airpods', quantities[1], AIRPODS_PRICE, airpods_total),
-        ('Charger', quantities[2], CHARGER_PRICE, charger_total)
-    ]
-
-    # ------ MAKE A PAGE ------
     CreatePage()
 
-    # ------ CREATE A TABLE ------
     PDF.SetFont('helvetica', PARAGRAPH_SIZE, 'B')
     AddRow('ITEM', 'QTY', 'UNIT PRICE', 'TOTAL')
 
     PDF.SetFont('helvetica', PARAGRAPH_SIZE)
-    for i in range(len(checkboxes_ticked)):
-        AddData(*data_arguments[i])
+    for item in quantities.keys():
+        total_price = round(quantities[item] * PRICES[item], 2)
+        AddData(item, quantities[item], PRICES[item], total_price)
 
-
-    # ------ OUTPUT PDF ------
     PDF.Create('PDF.pdf')
 
 def Main():

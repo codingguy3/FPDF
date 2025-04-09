@@ -45,8 +45,8 @@ def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
 def GUI():
     # ------- NESTED FUNCTIONS ------
     def Update():
-        for i, state in enumerate(checkboxes_states):
-            if state.get() == 1:
+        for i in range(len(checkboxes_states)):
+            if checkboxes_states[i].get() == 1:
                 checkboxes_ticked[i] = True
             else:
                 checkboxes_ticked[i] = False            
@@ -66,8 +66,8 @@ def GUI():
         tkinter.Checkbutton(gui, text='Airpods', variable=checkboxes_states[1], command=Update),
         tkinter.Checkbutton(gui, text='Charger', variable=checkboxes_states[2], command=Update)
         ]
-    for checkbox in checkboxes:
-        checkbox.pack()
+    for i in range(len(checkboxes)):
+        checkboxes[i].pack()
 
     # ------ LOOP ------
     gui.mainloop()

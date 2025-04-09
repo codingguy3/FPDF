@@ -4,15 +4,11 @@ import tkinter
 HEADER_SIZE = 16
 PARAGRAPH_SIZE = 15
 
-ITEMS = ['iPhone', 'Airpods', 'Charger']
-
 IPHONE_PRICE = 999.99
 AIRPODS_PRICE = 499.99
 CHARGER_PRICE = 99.99
 
-iphones = None
-airpods = None 
-chargers = None
+items = {'iPhone': 0, 'AirPods': 0, 'Charger': 0}
 
 checkboxes_ticked = None
 
@@ -66,8 +62,8 @@ def GUI():
         tkinter.Checkbutton(gui, text='Airpods', variable=checkboxes_states[1], command=Update),
         tkinter.Checkbutton(gui, text='Charger', variable=checkboxes_states[2], command=Update)
         ]
-    for i in range(len(checkboxes)):
-        checkboxes[i].pack()
+    for checkbox in checkboxes:
+        checkbox.pack()
 
     # ------ LOOP ------
     gui.mainloop()
@@ -100,7 +96,8 @@ def Main():
     
     global checkboxes_ticked, iphones, airpods, chargers
     for i in range(len(checkboxes_ticked)):
-        print(checkboxes_ticked[i])
+        if checkboxes_ticked[i] == True:
+            pass
 
     # UpdatePDF()
 

@@ -98,8 +98,8 @@ def UpdatePDF():
 def Main():
     GUI()
     
-    global checkboxes_ticked
-    for i in range(3):
+    global checkboxes_ticked, iphones, airpods, chargers
+    for i in range(len(checkboxes_ticked)):
         print(checkboxes_ticked[i])
 
     # UpdatePDF()

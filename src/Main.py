@@ -4,6 +4,8 @@ import tkinter
 HEADER_SIZE = 16
 PARAGRAPH_SIZE = 15
 
+ITEMS = ['iPhone', 'Airpods', 'Charger']
+
 IPHONE_PRICE = 999.99
 AIRPODS_PRICE = 499.99
 CHARGER_PRICE = 99.99
@@ -40,25 +42,28 @@ def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
 
 def GUI():
     # ------- NESTED FUNCTIONS ------
-    def Print():
-        if checkboxIsOn.get() == 1:
-            print('Ticked')
-        else:
-            print('Nothing')
+    def Print(*args):
+        for i in range(3):
+            if checkboxes_states[i].get() == 1:
+                print(f'Item {i} ticked')
+            else:
+                print(f'Item {i} unticked')
 
     # ------ SETUP ------
     global iphones, airpods, chargers
     gui = tkinter.Tk()
-    checkboxIsOn = tkinter.IntVar()
     gui.title('GUI')
     gui.iconbitmap('res/pdf_edit.ico')
     gui.geometry('250x350')
+    checkboxes_states = [ tkinter.IntVar(), tkinter.IntVar(), tkinter.IntVar() ]
+    for state in checkboxes_states:
+        state.trace_add('write', Print)
 
     # ------ CHECKBOX ------
     checkboxes = [
-        tkinter.Checkbutton(gui, text='iPhone', variable=checkboxIsOn, command=Print),
-        tkinter.Checkbutton(gui, text='Airpods', variable=checkboxIsOn, command=Print),
-        tkinter.Checkbutton(gui, text='Charger', variable=checkboxIsOn, command=Print)
+        tkinter.Checkbutton(gui, text='iPhone', variable=checkboxes_states[0], command=Print),
+        tkinter.Checkbutton(gui, text='Airpods', variable=checkboxes_states[1], command=Print),
+        tkinter.Checkbutton(gui, text='Charger', variable=checkboxes_states[2], command=Print)
         ]
     for checkbox in checkboxes:
         checkbox.pack()

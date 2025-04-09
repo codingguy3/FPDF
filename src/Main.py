@@ -15,6 +15,16 @@ quantities = {'iPhone': 0, 'Airpods': 0, 'Charger': 0}
 
 checkboxes_ticked = None
 
+class Product:
+    def __init__(self, item: str, qty: int, unit_price: float, total: float):
+        self.item = item 
+        self.qty = qty
+        self.unit_price = unit_price
+        self.total = total
+        self.checkbox_ticked = False
+
+iPhone = Product('iPhone', 0, IPHONE_PRICE, 0.00)
+
 
 def Header():
     PDF.SetFont('helvetica', HEADER_SIZE, 'B')
@@ -35,7 +45,7 @@ def AddRow(str1: str, str2: str, str3: str, str4: str):
     PDF.AddBox(str4, 40, centered=True)
     PDF.AddLine(12)
 
-def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
+def AddData(item: str, qty: int, unit_price: float, total: float): # Numerical data
     if qty > 0:
         AddRow(item, str(qty), f'${unit_price}', f'${total}')
 

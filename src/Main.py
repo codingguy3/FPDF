@@ -1,4 +1,4 @@
-import pdf
+import a
 import tkinter
 import items
 from utils import gui, file
@@ -7,8 +7,8 @@ def OpenGUI():
     pass
 
 def UpdatePDF():
-    pdf.AddPage()
-    pdf.Output('PDF.pdf')
+    a.AddPage()
+    a.Output('PDF.pdf')
 
 def Main():
     OpenGUI()

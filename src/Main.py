@@ -42,9 +42,9 @@ def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
 
 def GUI():
     # ------- NESTED FUNCTIONS ------
-    def Print(*args):
-        for i in range(3):
-            if checkboxes_states[i].get() == 1:
+    def Print():
+        for i, state in enumerate(checkboxes_states):
+            if state.get() == 1:
                 print(f'Item {i} ticked')
 
     # ------ SETUP ------

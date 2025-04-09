@@ -42,10 +42,12 @@ def AddData(item: str, qty: int, unit_price: int, total: int): # Numerical data
 
 def GUI():
     # ------- NESTED FUNCTIONS ------
-    def Print():
+    def Update():
         for i, state in enumerate(checkboxes_states):
             if state.get() == 1:
-                print(f'Item {i} ticked')
+                checkboxes_ticked[i] = True
+            else:
+                checkboxes_ticked[i] = False            
 
     # ------ SETUP ------
     global iphones, airpods, chargers
@@ -54,12 +56,13 @@ def GUI():
     gui.iconbitmap('res/pdf_edit.ico')
     gui.geometry('250x350')
     checkboxes_states = [ tkinter.IntVar(), tkinter.IntVar(), tkinter.IntVar() ]
+    checkboxes_ticked = [False, False, False]
 
     # ------ CHECKBOX ------
     checkboxes = [
-        tkinter.Checkbutton(gui, text='iPhone', variable=checkboxes_states[0], command=Print),
-        tkinter.Checkbutton(gui, text='Airpods', variable=checkboxes_states[1], command=Print),
-        tkinter.Checkbutton(gui, text='Charger', variable=checkboxes_states[2], command=Print)
+        tkinter.Checkbutton(gui, text='iPhone', variable=checkboxes_states[0], command=Update),
+        tkinter.Checkbutton(gui, text='Airpods', variable=checkboxes_states[1], command=Update),
+        tkinter.Checkbutton(gui, text='Charger', variable=checkboxes_states[2], command=Update)
         ]
     for checkbox in checkboxes:
         checkbox.pack()

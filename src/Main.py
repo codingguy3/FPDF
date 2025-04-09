@@ -55,8 +55,13 @@ def GUI():
     gui.geometry('250x350')
 
     # ------ CHECKBOX ------
-    checkbox = tkinter.Checkbutton(gui, text='iPhone', variable=checkboxIsOn, command=Print)
-    checkbox.pack()
+    checkboxes = [
+        tkinter.Checkbutton(gui, text='iPhone', variable=checkboxIsOn, command=Print),
+        tkinter.Checkbutton(gui, text='Airpods', variable=checkboxIsOn, command=Print),
+        tkinter.Checkbutton(gui, text='Charger', variable=checkboxIsOn, command=Print)
+        ]
+    for checkbox in checkboxes:
+        checkbox.pack()
 
     # ------ LOOP ------
     gui.mainloop()
